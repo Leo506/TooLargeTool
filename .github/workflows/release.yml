@@ -7,7 +7,7 @@ on:
       
 env:
   NugetDir: ${{ github.workspace }}/nuget
-  DotnetVersion: '7.0.2'
+  DotnetVersion: '7.0.x'
   
 defaults:
   run:
@@ -15,14 +15,18 @@ defaults:
     
 jobs:
   create_nuget:
-    runs-on: ubutu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3.2.0
         with:
           dotnet-version: ${{ env.DotnetVersion }}
+
+      - name: Restore workloads
+        run: dotnet workload restore --ignore-failed-sources
         
-      - run: dotnet pack --configuration Release --output ${{ env.NugetDir }}
+      - name: Pack
+        run: dotnet pack --configuration Release --output ${{ env.NugetDir }}
     
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v1.0.8
