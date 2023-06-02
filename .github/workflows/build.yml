@@ -9,7 +9,6 @@ on:
       - '*'
       
 env:
-  DotnetVersion: '7.0.2'
   Configuration: 'Release'
 
 defaults:
@@ -22,7 +21,5 @@ jobs:
     steps:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3.2.0
-      with:
-        dotnet-version: ${{ env.DotnetVersion }}
     - run: dotnet build --configuration ${{ env.Configuration }}
     
