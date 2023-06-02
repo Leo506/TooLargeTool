@@ -13,6 +13,6 @@ public class App : Application
     public override void OnCreate()
     {
         base.OnCreate();
-        RegisterActivityLifecycleCallbacks(new ActivityCallback());
+        Tool.StartBundleLogging(this);
     }
 }

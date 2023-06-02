@@ -1,7 +1,5 @@
 #pragma warning disable CA1422
 #pragma warning disable CA1416
-using TooLargeTool;
-
 namespace Sample;
 
 [Activity(Label = "@string/app_name", MainLauncher = true)]
@@ -14,8 +12,6 @@ public class MainActivity : Activity
         // Set our view from the "main" layout resource
         SetContentView(Resource.Layout.activity_main);
         
-        FragmentManager?.RegisterFragmentLifecycleCallbacks(new FragmentCallback(), true);
-
         FragmentManager?.BeginTransaction()
             ?.Replace(Resource.Id.fragmentFrame, new TestFragment())
             ?.Commit();
