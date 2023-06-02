@@ -6,7 +6,7 @@ namespace Sample;
 [Application]
 public class App : Application
 {
-    public App(System.IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)  
+    public App(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)  
     {  
     }  
     
