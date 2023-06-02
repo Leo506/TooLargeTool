@@ -1,0 +1,28 @@
+name: build
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - '*'
+      
+env:
+  DotnetVersion: '7.0.2'
+  Configuration: 'Release'
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    runs-on: ubutu-latest
+    steps:
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v3.2.0
+      with:
+        dotnet-version: ${{ env.DotnetVersion }}
+    - run: dotnet build --configuration ${{ env.Configuration }}
+    
