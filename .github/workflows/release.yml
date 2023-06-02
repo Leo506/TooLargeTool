@@ -26,9 +26,12 @@ jobs:
       - name: Restore workloads
         run: dotnet workload restore --ignore-failed-sources
         
+      - name: Build
+        run: dotnet build TooLargeTool/TooLargeTool.csproj --configuration Release
+        
       - name: Pack
-        run: dotnet pack --configuration Release --output ${{ env.NugetDir }}
-    
+        run: dotnet pack TooLargeTool/TooLargeTool.csproj --configuration Release --output ${{ env.NugetDir }}
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v1.0.8
         with:
