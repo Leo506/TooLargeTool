@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1.0.8
         with:
           name: nuget-artifact
-          path: ${{ env.NugetDir }}/*.nupkg
+          path: ${{ env.NugetDir }}/*
           retention-days: 1
           
   deploy:
