@@ -1,0 +1,51 @@
+name: release
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+      
+env:
+  NugetDir: ${{ github.workspace }}/nuget
+  DotnetVersion: '7.0.2'
+  
+defaults:
+  run:
+    shell: pwsh
+    
+jobs:
+  create_nuget:
+    runs-on: ubutu-latest
+    steps:
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3.2.0
+        with:
+          dotnet-version: ${{ env.DotnetVersion }}
+        
+      - run: dotnet pack --configuration Release --output ${{ env.NugetDir }}
+    
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          name: nuget-artifact
+          path: ${{ env.NugetDir }}/*.nupkg
+          retention-days: 1
+          
+  deploy:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: nuget-artifact
+          path: ${{ env.NugetDir }}
+          
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3.2.0
+        with:
+          dotnet-version: ${{ env.DotnetVersion }}
+          
+      - name: Publish nuget package
+        run: |
+          dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key "${{ secrets.NUGETAPIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
