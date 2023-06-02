@@ -9,7 +9,6 @@ on:
       - '*'
       
 env:
-  DotnetVersion: '7.0.2'
   Configuration: 'Release'
 
 defaults:
@@ -18,11 +17,14 @@ defaults:
 
 jobs:
   build:
-    runs-on: ubutu-latest
+    runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3.2.0
       with:
-        dotnet-version: ${{ env.DotnetVersion }}
+        dotnet-version: '7.0.x'
+    - name: Restore worloads
+      run: dotnet workload restore --ignore-failed-sources
     - run: dotnet build --configuration ${{ env.Configuration }}
     
