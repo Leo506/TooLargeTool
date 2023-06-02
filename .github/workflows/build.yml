@@ -18,7 +18,7 @@ defaults:
 
 jobs:
   build:
-    runs-on: ubutu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3.2.0
