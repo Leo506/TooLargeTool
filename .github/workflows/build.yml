@@ -21,5 +21,6 @@ jobs:
     steps:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3.2.0
+    -run: pwd
     - run: dotnet build --configuration ${{ env.Configuration }}
     
