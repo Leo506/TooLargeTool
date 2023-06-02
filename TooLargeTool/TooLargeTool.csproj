@@ -4,6 +4,15 @@
         <TargetFramework>net7.0-android</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Authors>Leo506</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Title>TooLargeTool</Title>
+        <Description>Tool for logging android bundles size</Description>
+        <RepositoryUrl>https://github.com/Leo506/TooLargeTool</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Copyright>Copyright (c) Artem Levin 2023</Copyright>
+        <PackageTags>android</PackageTags>
+        <Version>1.0.0</Version>
     </PropertyGroup>
 
 </Project>
