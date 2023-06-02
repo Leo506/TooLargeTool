@@ -24,6 +24,7 @@ jobs:
       uses: actions/setup-dotnet@v3.2.0
       with:
         dotnet-version: '7.0.x'
-    - run: ls
+    - name: Restore worloads
+      run: dotnet workload restore --ignore-failed-sources
     - run: dotnet build --configuration ${{ env.Configuration }}
     
