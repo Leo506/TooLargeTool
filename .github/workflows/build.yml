@@ -4,9 +4,15 @@ on:
   push:
     branches:
       - 'main'
+    paths: 
+      - '**.cs'
+      - '**.csproj'
   pull_request:
     branches:
       - '*'
+    paths: 
+      - '**.cs'
+      - '**.csproj'
       
 env:
   Configuration: 'Release'
