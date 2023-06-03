@@ -8,13 +8,15 @@ on:
 env:
   NugetDir: ${{ github.workspace }}/nuget
   DotnetVersion: '7.0.x'
+  ProjectPath: 'TooLargeTool/TooLargeTool.csproj'
+  NugetSource: https://api.nuget.org/v3/index.json
   
 defaults:
   run:
     shell: pwsh
     
 jobs:
-  create_nuget:
+  create_and_push_nuget:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,30 +29,7 @@ jobs:
         run: dotnet workload restore --ignore-failed-sources
         
       - name: Pack
-        run: dotnet pack --configuration Release --output ${{ env.NugetDir }}
-    
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v1.0.8
-        with:
-          name: nuget-artifact
-          path: ${{ env.NugetDir }}/*.nupkg
-          retention-days: 1
-          
-  deploy:
-    if: github.event_name == 'release'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: nuget-artifact
-          path: ${{ env.NugetDir }}
-          
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3.2.0
-        with:
-          dotnet-version: ${{ env.DotnetVersion }}
-          
-      - name: Publish nuget package
-        run: |
-          dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key "${{ secrets.NUGETAPIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet pack ${{ env.ProjectPath }} --configuration Release --output ${{ env.NugetDir }}
+
+      - name: Push to Nuget.org
+        run: dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key ${{ secrets.NUGETAPIKEY }} --source ${{ env.NugetSource }} --skip-duplicate
