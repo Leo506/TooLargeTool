@@ -32,4 +32,4 @@ jobs:
         run: dotnet pack ${{ env.ProjectPath }} --configuration Release --output ${{ env.NugetDir }}
 
       - name: Push to Nuget.org
-        run: dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key ${{ secrects.NUGETAPIKEY }} --source ${{ env.NugetSource }} --skip-duplicate
+        run: dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key ${{ secrets.NUGETAPIKEY }} --source ${{ env.NugetSource }} --skip-duplicate
