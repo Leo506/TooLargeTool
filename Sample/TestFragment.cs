@@ -22,6 +22,6 @@ public class TestFragment : Fragment, View.IOnClickListener
     {
         var intent = new Intent(Context, typeof(SecondActivity));
         intent.PutExtra("test_key", "test_data");
-        Activity?.StartActivityWithLoggingExtras(intent);
+        this.StartActivityWithLoggingExtras(intent);
     }
 }
