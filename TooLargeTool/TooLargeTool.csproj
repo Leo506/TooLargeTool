@@ -13,7 +13,7 @@
         <Copyright>Copyright (c) Artem Levin 2023</Copyright>
         <PackageTags>android</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Version>1.0.1</Version>
+        <Version>1.1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
