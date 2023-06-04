@@ -8,7 +8,7 @@ public class TestFragment : Fragment, View.IOnClickListener
 {
     public override View? OnCreateView(LayoutInflater? inflater, ViewGroup? container, Bundle? savedInstanceState)
     {
-        return inflater.Inflate(Resource.Layout.test_fragment, container, false);
+        return inflater?.Inflate(Resource.Layout.test_fragment, container, false);
     }
 
     public override void OnViewCreated(View? view, Bundle? savedInstanceState)
