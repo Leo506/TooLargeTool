@@ -19,6 +19,8 @@ defaults:
 jobs:
   create_and_push_nuget:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core SDK
