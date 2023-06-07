@@ -10,7 +10,6 @@ env:
   DotnetVersion: '7.0.x'
   ProjectPath: 'TooLargeTool/TooLargeTool.csproj'
   NugetSource: https://api.nuget.org/v3/index.json
-  GithubSource: https://nuget.pkg.github.com/Leo506/index.json
   
 defaults:
   run:
@@ -39,3 +38,6 @@ jobs:
 
       - name: Push to Github
         run: dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
+
+      - name: Push to Nuget.org
+        run: dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key ${{ secrets.NUGETAPIKEY }} --source ${{ env.NugetSource }} --skip-duplicate
