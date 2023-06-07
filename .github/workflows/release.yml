@@ -18,6 +18,8 @@ defaults:
 jobs:
   create_and_push_nuget:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core SDK
@@ -30,6 +32,12 @@ jobs:
         
       - name: Pack
         run: dotnet pack ${{ env.ProjectPath }} --configuration Release --output ${{ env.NugetDir }}
+
+      - name: Prepare to publish
+        run: dotnet nuget add source --username Leo506 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Leo506/index.json"
+
+      - name: Push to Github
+        run: dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate
 
       - name: Push to Nuget.org
         run: dotnet nuget push ${{ env.NugetDir }}/*.nupkg --api-key ${{ secrets.NUGETAPIKEY }} --source ${{ env.NugetSource }} --skip-duplicate
