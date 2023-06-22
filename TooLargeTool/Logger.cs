@@ -1,11 +1,14 @@
 ﻿using System.Text;
-using Android.Util;
+using Microsoft.Extensions.Logging;
+using TooLargeTool.Logging;
 
 namespace TooLargeTool;
 
-internal static class Logger
+internal class Logger
 {
-    public static void LogBundleSizeData(BundleSizeData bundleSizeData, string objectName, string operationName)
+    private readonly ILogger<Logger> _logger = LogHost.GetLogger<Logger>();
+
+    public void LogBundleSizeData(BundleSizeData bundleSizeData, string objectName, string operationName)
     {
         var sb = new StringBuilder();
         sb.Append($"[{objectName}]");
@@ -17,6 +20,6 @@ internal static class Logger
         foreach (var (key, size) in bundleSizeData.KeysSizes) 
             sb.AppendLine($"\t{key} - {size:F1} KB");
 
-        Log.Info(nameof(TooLargeTool), sb.ToString());
+        _logger.LogInformation(sb.ToString());
     }
 }

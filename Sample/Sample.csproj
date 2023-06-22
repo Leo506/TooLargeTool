@@ -8,8 +8,15 @@
         <ApplicationId>com.companyname.Sample</ApplicationId>
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <Configurations>Debug;Release;AndroidLog;SerilogLog</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\TooLargeTool\TooLargeTool.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Serilog" Version="3.0.1" />
+      <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     </ItemGroup>
 </Project>

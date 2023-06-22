@@ -7,22 +7,22 @@ internal class ActivityLifecycleCallbacks : Java.Lang.Object, Application.IActiv
     public void OnActivitySaveInstanceState(Activity activity, Bundle outState)
     {
         var bundleSizeData = BundleSizeCalculator.GetBundleSizeData(outState);
-        Logger.LogBundleSizeData(bundleSizeData, activity.GetType().Name, nameof(Activity.OnSaveInstanceState));
+        new Logger().LogBundleSizeData(bundleSizeData, activity.GetType().Name, nameof(Activity.OnSaveInstanceState));
     }
     
-#region Unused properties and methods
-
     public void OnActivityCreated(Activity activity, Bundle? savedInstanceState)
     {
         _callbacks = new FragmentLifecycleCallbacks();
-        activity.FragmentManager?.RegisterFragmentLifecycleCallbacks(_callbacks, true);   
+        activity.FragmentManager?.RegisterFragmentLifecycleCallbacks(_callbacks, true);
     }
 
     public void OnActivityDestroyed(Activity activity)
     {
         activity.FragmentManager?.UnregisterFragmentLifecycleCallbacks(_callbacks);
     }
-    public void OnActivityPaused(Activity activity) { }
+    
+#region Unused properties and methods
+public void OnActivityPaused(Activity activity) { }
     public void OnActivityResumed(Activity activity) { }
     public void OnActivityStarted(Activity activity) { }
     public void OnActivityStopped(Activity activity) { }

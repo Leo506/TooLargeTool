@@ -66,6 +66,6 @@ public static class StartActivityExtensions
             return;
         
         var bundleSizeData = BundleSizeCalculator.GetBundleSizeData(intent.Extras);
-        Logger.LogBundleSizeData(bundleSizeData, javaObject.GetType().Name, operationName);
+        new Logger().LogBundleSizeData(bundleSizeData, javaObject.GetType().Name, operationName);
     }
 }

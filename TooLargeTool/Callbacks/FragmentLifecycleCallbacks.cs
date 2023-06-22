@@ -8,6 +8,7 @@ internal class FragmentLifecycleCallbacks : FragmentManager.FragmentLifecycleCal
             return;
         
         var bundleSizeData = BundleSizeCalculator.GetBundleSizeData(outState);
-        Logger.LogBundleSizeData(bundleSizeData, f?.GetType().Name ?? string.Empty, nameof(Fragment.OnSaveInstanceState));
+        new Logger().LogBundleSizeData(bundleSizeData, f?.GetType().Name ?? string.Empty,
+            nameof(Fragment.OnSaveInstanceState));
     }
 }
