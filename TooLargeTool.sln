@@ -11,17 +11,27 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		AndroidLog|Any CPU = AndroidLog|Any CPU
+		SerilogLog|Any CPU = SerilogLog|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.AndroidLog|Any CPU.ActiveCfg = AndroidLog|Any CPU
+		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.AndroidLog|Any CPU.Build.0 = AndroidLog|Any CPU
+		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.SerilogLog|Any CPU.ActiveCfg = SerilogLog|Any CPU
+		{FE610A5A-C76A-4B8D-98AA-171B6EE72643}.SerilogLog|Any CPU.Build.0 = SerilogLog|Any CPU
 		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.AndroidLog|Any CPU.ActiveCfg = AndroidLog|Any CPU
+		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.AndroidLog|Any CPU.Build.0 = AndroidLog|Any CPU
+		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.SerilogLog|Any CPU.ActiveCfg = SerilogLog|Any CPU
+		{7914A970-F66A-4752-BCF3-3703DD58D8B8}.SerilogLog|Any CPU.Build.0 = SerilogLog|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

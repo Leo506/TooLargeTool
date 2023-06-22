@@ -2,7 +2,7 @@
 
 namespace TooLargeTool.Logging;
 
-public class LogHost
+public static class LogHost
 {
     private static ILoggerFactory _loggerFactory;
 

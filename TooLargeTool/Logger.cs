@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Android.Util;
 using Microsoft.Extensions.Logging;
 using TooLargeTool.Logging;
 
