@@ -2,12 +2,13 @@
 
 internal class ActivityLifecycleCallbacks : Java.Lang.Object, Application.IActivityLifecycleCallbacks
 {
+    private readonly Logger _logger = new();
     private FragmentManager.FragmentLifecycleCallbacks? _callbacks;
     
     public void OnActivitySaveInstanceState(Activity activity, Bundle outState)
     {
         var bundleSizeData = BundleSizeCalculator.GetBundleSizeData(outState);
-        Logger.LogBundleSizeData(bundleSizeData, activity.GetType().Name, nameof(Activity.OnSaveInstanceState));
+        _logger.LogBundleSizeData(bundleSizeData, activity.GetType().Name, nameof(Activity.OnSaveInstanceState));
     }
     
 #region Unused properties and methods
