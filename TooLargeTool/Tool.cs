@@ -6,6 +6,8 @@ namespace TooLargeTool;
 
 public static class Tool
 {
+    private static bool _isStarted = false;
+    
     public static void StartBundleLogging(Application app, ILoggerProvider loggerProvider)
     {
         StartBundleLogging(app);
@@ -14,6 +16,10 @@ public static class Tool
 
     public static void StartBundleLogging(Application app)
     {
+        if (_isStarted)
+            return;
+        
         app.RegisterActivityLifecycleCallbacks(new ActivityLifecycleCallbacks());
+        _isStarted = true;
     }
 }
