@@ -1,7 +1,7 @@
 # TooLargeTool
 Tool for logging android bundle size
 
-This is unofficial clone of [TooLargeTool](https://github.dev/guardian/toolargetool/) for `.NET 7`
+This is unofficial clone of [TooLargeTool](https://github.com/guardian/toolargetool) for `.NET 7`
 
 ## How to use
 In your application class
